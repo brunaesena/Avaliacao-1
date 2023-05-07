@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner leia = new Scanner(System.in);
-        DecimalFormat decimal = new DecimalFormat("#.##0.00");
+        DecimalFormat decimal = new DecimalFormat("#,###.00");
 
         Double media = 0.0;
         Double somaMediaDisc = 0.0;
@@ -18,18 +18,32 @@ public class Main {
         String turmaNome;
         Double somaMediaGeralTurma = 0.0;
         Double mediaGeralturma = 0.0;
-// teste git commit 2 2
+
         System.out.println("Qual o nome da turma analisada? ");
-        turmaNome = leia.nextLine();
+        System.out.println("Em caso de nome composto, utilizar o '_'. Exemplo: 'ADS-NASSAU'.");
+        turmaNome = leia.next();
 
         System.out.println("Quantas disciplinas serao digitadas?");
-        int qtdDisciplinas = leia.nextInt();
+        String qtd = leia.next();
+        int qtdDisciplinas = 0;
+        boolean valido = true;
+        do {
+            try{
+                qtdDisciplinas = Integer.parseInt(qtd);
+                valido = false;
+            } catch (NumberFormatException numberException){
+                System.out.println("Digite um numero valido");
+                qtd = leia.next();
+            }
+        }while (valido);
         String[] disciplinasNome = new String[qtdDisciplinas];
+
         for(var i = 0; i < qtdDisciplinas; i++){
             System.out.println("Digite o nome da "+ (i+1) +"ª disciplina: ");
-            System.out.println("Em caso de nome composto, utilizar o '_'. Exemplo: 'fisica_quantica'.");
+            System.out.println("Em caso de nome composto, utilizar o '_'. Exemplo: 'Logica-Programacao'.");
             disciplinasNome[i] = leia.next();
         }
+        
         for(var i = 0; i < qtdDisciplinas; i++){
             System.out.println("Quantos alunos existe na disciplina de "+ disciplinasNome[i]+ "?");
             int qtdAlunos = leia.nextInt();
@@ -68,6 +82,7 @@ public class Main {
                     menorMedia = media;
                 }
             }
+            System.out.println("-------------------------------");
             System.out.println("#### RESUMO DA DISCIPLINA ####");
             System.out.println("DISCIPLINA:" + disciplinasNome[i]);
             System.out.println("QTD TOTAL DE ALUNOS: " + qtdAlunos);
@@ -88,6 +103,7 @@ public class Main {
 
         mediaGeralturma = somaMediaGeralTurma / qtdDisciplinas;
 
+        System.out.println("-------------------------------");
         System.out.println("#### RESUMO DA TURMA ####");
         System.out.println("TURMA: " + turmaNome);
         System.out.println("QTD DE DISCIPLINAS: " + qtdDisciplinas);
