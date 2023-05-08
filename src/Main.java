@@ -1,11 +1,13 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
+
 public class Main {
 
     public static void main(String[] args) {
         Scanner leia = new Scanner(System.in);
         DecimalFormat decimal = new DecimalFormat("#,###.00");
+        ConversorDeStringParaNumero conversor = new ConversorDeStringParaNumero();
 
         Double media = 0.0;
         Double somaMediaDisc = 0.0;
@@ -24,18 +26,8 @@ public class Main {
         turmaNome = leia.next();
 
         System.out.println("Quantas disciplinas serao digitadas?");
-        String qtd = leia.next();
-        int qtdDisciplinas = 0;
-        boolean valido = true;
-        do {
-            try{
-                qtdDisciplinas = Integer.parseInt(qtd);
-                valido = false;
-            } catch (NumberFormatException numberException){
-                System.out.println("Digite um numero valido");
-                qtd = leia.next();
-            }
-        }while (valido);
+        String inputQtdDisciplinas = leia.next();
+        int qtdDisciplinas = conversor.conversorInteiro(inputQtdDisciplinas,leia);
         String[] disciplinasNome = new String[qtdDisciplinas];
 
         for(var i = 0; i < qtdDisciplinas; i++){
@@ -43,22 +35,28 @@ public class Main {
             System.out.println("Em caso de nome composto, utilizar o '_'. Exemplo: 'Logica-Programacao'.");
             disciplinasNome[i] = leia.next();
         }
-        
+
         for(var i = 0; i < qtdDisciplinas; i++){
             System.out.println("Quantos alunos existe na disciplina de "+ disciplinasNome[i]+ "?");
-            int qtdAlunos = leia.nextInt();
+            String inputQtdAlunos = leia.next();
+            int qtdAlunos = conversor.conversorInteiro(inputQtdAlunos,leia);
+
             for(var j = 0; j < qtdAlunos; j++){
                 System.out.println("Digite a primeira nota do " + (j+1) + "º aluno: ");
-                Double av1 = leia.nextDouble();
+                String inputAv1 = leia.next();
+                Double av1 = conversor.conversorDecimal(inputAv1,leia);
                 while (av1 < 0.0 || av1 > 10.0){
                     System.out.println("Digite uma nota valida de 0.0 a 10.0!");
-                    av1 = leia.nextDouble();
+                    inputAv1 = leia.next();
+                    av1 = conversor.conversorDecimal(inputAv1,leia);
                 }
                 System.out.println("Digite a segunda nota do " + (j+1) + "º aluno: ");
-                Double av2 = leia.nextDouble();
+                String inputAv2 = leia.next();
+                Double av2 = conversor.conversorDecimal(inputAv2,leia);
                 while (av2 < 0.0 || av2 > 10.0){
                     System.out.println("Digite uma nota valida de 0.0 a 10.0!");
-                    av2 = leia.nextDouble();
+                    inputAv2 = leia.next();
+                    av2 = conversor.conversorDecimal(inputAv2,leia);
                 }
 
                 media = (av1.doubleValue() + av2.doubleValue()) /2;
@@ -92,6 +90,7 @@ public class Main {
             System.out.println("QTD ALUNOS REPROVADOS: " + qtdReprovado);
             System.out.println("QTD ALUNOS NA FINAL: " + qtdFinal);
             System.out.println("QTD ALUNOS APROVADOS: "+ qtdAprovado);
+            System.out.println("-------------------------------");
 
             somaMediaGeralTurma = somaMediaGeralTurma + mediaGeralDisc;
             somaMediaDisc = (double)0;
@@ -108,6 +107,7 @@ public class Main {
         System.out.println("TURMA: " + turmaNome);
         System.out.println("QTD DE DISCIPLINAS: " + qtdDisciplinas);
         System.out.println("MÉDIA GERAL DA TURMA: " + decimal.format(mediaGeralturma));
+        System.out.println("-------------------------------");
 
     }
 
