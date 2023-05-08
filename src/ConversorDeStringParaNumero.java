@@ -8,8 +8,13 @@ public class ConversorDeStringParaNumero {
             try{
                 valorConvertido = Integer.parseInt(valorASerConvertido);
                 valido = false;
+                if (valorConvertido < 0){
+                    System.out.println("Digite um número válido!");
+                    valorASerConvertido = input.next();
+                    valido = true;
+                }
             } catch (NumberFormatException numberException){
-                System.out.println("Digite um numero valido!");
+                System.out.println("Digite um número válido!");
                 valorASerConvertido = input.next();
             }
         }while (valido);
@@ -22,8 +27,13 @@ public class ConversorDeStringParaNumero {
             try{
                 valorConvertido = Double.parseDouble(valorASerConvertido);
                 valido = false;
+                if (valorConvertido < 0){
+                    System.out.println("Digite um número válido!");
+                    valorASerConvertido = input.next();
+                    valido = true;
+                }
             } catch (NumberFormatException numberException){
-                System.out.println("Digite um numero valido!");
+                System.out.println("Digite um número válido!");
                 valorASerConvertido = input.next();
             }
         }while (valido);

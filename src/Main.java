@@ -1,7 +1,6 @@
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -21,23 +20,24 @@ public class Main {
         Double somaMediaGeralTurma = 0.0;
         Double mediaGeralturma = 0.0;
 
+        System.out.println("Bem-vindo(a) ao sistema da sua instituição de ensino!");
         System.out.println("Qual o nome da turma analisada? ");
-        System.out.println("Em caso de nome composto, utilizar o '_'. Exemplo: 'ADS-NASSAU'.");
+        System.out.println("*Em caso de nome composto, utilizar o '_'. Exemplo: 'ADS_NASSAU'.");
         turmaNome = leia.next();
 
-        System.out.println("Quantas disciplinas serao digitadas?");
+        System.out.println("Quantas disciplinas serão digitadas?");
         String inputQtdDisciplinas = leia.next();
         int qtdDisciplinas = conversor.conversorInteiro(inputQtdDisciplinas,leia);
         String[] disciplinasNome = new String[qtdDisciplinas];
 
         for(var i = 0; i < qtdDisciplinas; i++){
             System.out.println("Digite o nome da "+ (i+1) +"ª disciplina: ");
-            System.out.println("Em caso de nome composto, utilizar o '_'. Exemplo: 'Logica-Programacao'.");
+            System.out.println("*Em caso de nome composto, utilizar o '_'. Exemplo: 'Lógica_Programação'.");
             disciplinasNome[i] = leia.next();
         }
 
         for(var i = 0; i < qtdDisciplinas; i++){
-            System.out.println("Quantos alunos existe na disciplina de "+ disciplinasNome[i]+ "?");
+            System.out.println("Quantos alunos existem na disciplina de "+ disciplinasNome[i]+ "?");
             String inputQtdAlunos = leia.next();
             int qtdAlunos = conversor.conversorInteiro(inputQtdAlunos,leia);
 
@@ -46,7 +46,7 @@ public class Main {
                 String inputAv1 = leia.next();
                 Double av1 = conversor.conversorDecimal(inputAv1,leia);
                 while (av1 < 0.0 || av1 > 10.0){
-                    System.out.println("Digite uma nota valida de 0.0 a 10.0!");
+                    System.out.println("Digite uma nota válida de 0.0 a 10.0!");
                     inputAv1 = leia.next();
                     av1 = conversor.conversorDecimal(inputAv1,leia);
                 }
@@ -54,7 +54,7 @@ public class Main {
                 String inputAv2 = leia.next();
                 Double av2 = conversor.conversorDecimal(inputAv2,leia);
                 while (av2 < 0.0 || av2 > 10.0){
-                    System.out.println("Digite uma nota valida de 0.0 a 10.0!");
+                    System.out.println("Digite uma nota válida de 0.0 a 10.0!");
                     inputAv2 = leia.next();
                     av2 = conversor.conversorDecimal(inputAv2,leia);
                 }
@@ -82,14 +82,14 @@ public class Main {
             }
             System.out.println("-------------------------------");
             System.out.println("#### RESUMO DA DISCIPLINA ####");
-            System.out.println("DISCIPLINA:" + disciplinasNome[i]);
-            System.out.println("QTD TOTAL DE ALUNOS: " + qtdAlunos);
-            System.out.println("MÉDIA GERAL DA DISCIPLINA: " + mediaGeralDisc);
-            System.out.println("MAIOR MÉDIA DA DISCIPLINA: " + maiorMedia);
-            System.out.println("MENOR MÉDIA DA DISCIPLINA: " + menorMedia);
-            System.out.println("QTD ALUNOS REPROVADOS: " + qtdReprovado);
-            System.out.println("QTD ALUNOS NA FINAL: " + qtdFinal);
-            System.out.println("QTD ALUNOS APROVADOS: "+ qtdAprovado);
+            System.out.println("NOME DA DISCIPLINA:" + disciplinasNome[i]);
+            System.out.println("QUANTIDADE TOTAL DE ALUNOS: " + qtdAlunos);
+            System.out.println("MÉDIA GERAL DA DISCIPLINA: " + decimal.format(mediaGeralDisc));
+            System.out.println("MAIOR MÉDIA DA DISCIPLINA: " + decimal.format(maiorMedia));
+            System.out.println("MENOR MÉDIA DA DISCIPLINA: " + decimal.format(menorMedia));
+            System.out.println("QUANTIDADE DE ALUNOS REPROVADOS: " + qtdReprovado);
+            System.out.println("QUANTIDADE DE ALUNOS NA FINAL: " + qtdFinal);
+            System.out.println("QUANTIDADE DE ALUNOS APROVADOS: "+ qtdAprovado);
             System.out.println("-------------------------------");
 
             somaMediaGeralTurma = somaMediaGeralTurma + mediaGeralDisc;
@@ -104,8 +104,8 @@ public class Main {
 
         System.out.println("-------------------------------");
         System.out.println("#### RESUMO DA TURMA ####");
-        System.out.println("TURMA: " + turmaNome);
-        System.out.println("QTD DE DISCIPLINAS: " + qtdDisciplinas);
+        System.out.println("NOME DA TURMA: " + turmaNome);
+        System.out.println("QUANTIDADE DE DISCIPLINAS: " + qtdDisciplinas);
         System.out.println("MÉDIA GERAL DA TURMA: " + decimal.format(mediaGeralturma));
         System.out.println("-------------------------------");
 
