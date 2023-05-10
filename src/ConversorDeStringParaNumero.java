@@ -10,11 +10,13 @@ public class ConversorDeStringParaNumero {
                 valido = false;
                 if (valorConvertido < 0){
                     System.out.println("Digite um número válido!");
+                    System.out.println("*Utilize '.' em caso de números decimais.");
                     valorASerConvertido = input.next();
                     valido = true;
                 }
             } catch (NumberFormatException numberException){
                 System.out.println("Digite um número válido!");
+                System.out.println("*Utilize '.' em caso de números decimais.");
                 valorASerConvertido = input.next();
             }
         }while (valido);
@@ -29,11 +31,13 @@ public class ConversorDeStringParaNumero {
                 valido = false;
                 if (valorConvertido < 0){
                     System.out.println("Digite um número válido!");
+                    System.out.println("*Utilize '.' em caso de números decimais.");
                     valorASerConvertido = input.next();
                     valido = true;
                 }
             } catch (NumberFormatException numberException){
                 System.out.println("Digite um número válido!");
+                System.out.println("*Utilize '.' em caso de números decimais.");
                 valorASerConvertido = input.next();
             }
         }while (valido);
